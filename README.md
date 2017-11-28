@@ -4,7 +4,7 @@ This is just a simple example of how to setup a flask server with apache and wsg
 
 ### Setup
 
-This probably isn't going to be comprehensive, but it's the basic steps I took to setup my servers.
+This probably isn't going to be comprehensive and even comprehensible, but these are the basic steps I took to setup my servers.
 
 First, test what python you have setup
 ```
@@ -26,7 +26,8 @@ If it shows up as
 ```
 	Python 2.x.y
 ```
-You'll need to replace youre regular python with python3.
+you'll need to replace youre regular python with python3.
+
 Here are the basic commands, this will get rid of the old python and pip commands and replace them with the python3 versions.
 ```
 	sudo rm /usr/bin/python
@@ -108,4 +109,4 @@ Finally just restart apache and this server should be running.
 
 
 
-I mostly got my setup information from [this](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps) Digial Ocean tutorial.
+I mostly got my setup information from [this](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps) Digial Ocean tutorial and a bit from [this](https://www.linode.com/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04) Linode guide.
