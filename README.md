@@ -131,9 +131,9 @@ You should rename all of these files now so that they're meaningful. Here's an e
 ```
 You'd replace 'example_server' with whatever you want.
 
-If you rename server.wsgi, make sure to update line 3 of server.conf and for your config later on.
+If you rename server.wsgi, make sure to update line 3 of server.conf and line 5 of your config.json if you setup a DeployServer.
 
-If you rename server.conf, make sure to remember that for future commands.
+If you rename server.conf, make sure to remember that for the next 2 commands.
 
 If you rename server.py, make sure to update line 8 of your server.wsgi.
 
