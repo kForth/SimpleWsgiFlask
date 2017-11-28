@@ -20,7 +20,7 @@ or some other
 ```
 	Python 3.x.y
 ``` 
-version, you're good to go and can skip ahead a bit.
+version, you're good to go and can skip to the next section.
 
 If it shows up as 
 ```
@@ -35,6 +35,9 @@ Here are the basic commands, this will get rid of the old python and pip command
 	sudo ln -s /usr/bin/python3 /usr/bin/python
 	sudo ln -s /usr/bin/pip3 /usr/bin/pip
 ```
+
+
+---
 
 This is where the python3 people come back.
 We're going to install apache2 now, you might already have this.
@@ -51,7 +54,7 @@ to your /etc/apache2/apache2.conf if you want to save memory. If you do edit it,
 	sudo service apache2 restart
 ```
 
-Now let's install mod-wsgi for apache, make sure you use the -py3 suffix to compile with python3.
+Next we'll' install mod-wsgi for apache, make sure you use the -py3 suffix to compile with python3.
 ```
 	sudo apt-get install libapache2-mod-wsgi-py3 python-dev
 	pip install mod_wsgi
@@ -66,10 +69,12 @@ Now you need to add mod_wsgi's config to apache's config. Run this command and c
 	mod_wsgi-express module-config
 ```
 
-Now paste it in your apache config
+Paste the output in your apache config
 ```
 	sudo nano /etc/apache2/apache2.conf
 ```
+
+---
 
 Now you need to setup your server. Start by making your server folder, I'm going to call it Server and put it in /var/www/ but you should call it something better.
 ```
@@ -83,15 +88,49 @@ Then clone this repo in, or just copy the files you need.
 	cd SimpleWsgiFlask
 ```
 
-You should rename all of these files now so that they're meaningful. Here's an example of how to rename server.wsgi and server.conf.
+---
+
+I'm also going to setup this server as a [DeployServer](https://github.com/kforth/DeployServer). This command will replace this repo's server.py with the DeployServer.
+```
+	wget https://raw.githubusercontent.com/kForth/DeployServer/master/server.py server.py
+```
+
+If you want to do this you'll also need to setup a config.json, so create and open the file
+```	
+	nano config.json
+```
+
+and paste this in, changing filenames where needed.
+```json
+	"server_name_here": {
+	    "github-secret":  "YouShouldUseASecretSinceTheFeatureIsHere",
+	    "folder-path":    "/var/www/Server",
+	    "save-packets":   true,
+	    "command":        ["git pull", "touch server.wsgi"]
+  	}
+```
+
+You'll need to then setup a webhook on github for your repo with these settings
+```
+	Payload URL: http://example.com:5050/update_server_name_here
+	Content Type: application/json
+	Secret: YouShouldUseASecretSinceTheFeatureIsHere
+	Which events would you like to trigger this webhook? Just the push Event
+```
+Make sure to change the port to match line 1 in your conf and change 'server_name_here' to match line 1 of your config.json.
+
+---
+
+You should rename all of these files now so that they're meaningful. Here's an example of how to rename server.wsgi, server.conf, and server.py.
 ```
 	cp server.wsgi example_server.wsgi
 	cp server.conf example_server.conf
+	cp server.py example_server.py
 ```
 You'd replace 'example_server' with whatever you want.
 If you rename server.wsgi, make sure to update line 3 of server.conf and for your config later on.
 If you rename server.conf, make sure to remember that for future commands.
-
+If you rename server.py, make sure to update line 8 of your server.wsgi.
 Next we need to move the conf file to the apache folder. Make sure to change the filename if you renamed it.
 ```
 	sudo mv server.conf /etc/apache2/sites-available/
@@ -106,7 +145,6 @@ Finally just restart apache and this server should be running.
 ```
 	sudo service apache2 restart
 ```
-
 
 
 I mostly got my setup information from [this](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps) Digial Ocean tutorial and a bit from [this](https://www.linode.com/docs/web-servers/apache/apache-web-server-on-ubuntu-14-04) Linode guide.
