@@ -54,7 +54,7 @@ to your /etc/apache2/apache2.conf if you want to save memory. If you do edit it,
 	sudo service apache2 restart
 ```
 
-Next we'll' install mod-wsgi for apache, make sure you use the -py3 suffix to compile with python3.
+Next we'll install mod-wsgi for apache, make sure you use the '-py3' suffix.
 ```
 	sudo apt-get install libapache2-mod-wsgi-py3 python-dev
 	pip install mod_wsgi
@@ -82,6 +82,8 @@ Now you need to setup your server. Start by making your server folder, I'm going
 	cd /var/www/Server
 ```
 
+If you do change the name of this folder, make sure to make it match line 2 and 7 in your conf file and line 6 of your wsgi file.
+
 Then clone this repo in, or just copy the files you need.
 ```
 	git clone https://github.com/kforth/SimpleWsgiFlask.git
@@ -90,7 +92,7 @@ Then clone this repo in, or just copy the files you need.
 
 ---
 
-I'm also going to setup this server as a [DeployServer](https://github.com/kforth/DeployServer). This command will replace this repo's server.py with the DeployServer.
+You don't need to do this but I'm going to setup this server as a [DeployServer](https://github.com/kforth/DeployServer). This command will replace this repo's server.py with the DeployServer.
 ```
 	wget https://raw.githubusercontent.com/kForth/DeployServer/master/server.py server.py
 ```
@@ -128,9 +130,13 @@ You should rename all of these files now so that they're meaningful. Here's an e
 	cp server.py example_server.py
 ```
 You'd replace 'example_server' with whatever you want.
+
 If you rename server.wsgi, make sure to update line 3 of server.conf and for your config later on.
+
 If you rename server.conf, make sure to remember that for future commands.
+
 If you rename server.py, make sure to update line 8 of your server.wsgi.
+
 Next we need to move the conf file to the apache folder. Make sure to change the filename if you renamed it.
 ```
 	sudo mv server.conf /etc/apache2/sites-available/
