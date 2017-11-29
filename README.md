@@ -12,21 +12,9 @@ First, test what python you have setup
 ```
 Notice the V is capitalized, a lowercoase v is something else.
 
-If your output looks like this:
-```
-	Python 3.5.2
-```
-or some other 
-```
-	Python 3.x.y
-``` 
-version, you're good to go and can skip to the next section.
+If your output looks like `Python 3.5.2` then it's the same as me and this should work better, if it's some other `Python 3.x.y` version, you're good to go and can skip to the next section. 
 
-If it shows up as 
-```
-	Python 2.x.y
-```
-you'll need to replace youre regular python with python3.
+If it shows up as `Python 2.x.y` you'll need to replace youre regular python with python3.
 
 Here are the basic commands, this will get rid of the old python and pip commands and replace them with the python3 versions.
 ```
@@ -45,20 +33,14 @@ We're going to install apache2 now, you might already have this.
 	sudo apt-get update && sudo apt-get upgrade
 	sudo apt-get install apache2 apache2-doc apache2-utils
 ```
-You might want to add 
-```
-	KeepAlive Off
-```
-to your /etc/apache2/apache2.conf if you want to save memory. If you do edit it, restart apache with this command:
-```
-	sudo service apache2 restart
-```
+You might want to add `KeepAlive Off` to your /etc/apache2/apache2.conf if you want to save memory. If you do edit it, restart apache with `sudo service apache2 restart`.
 
 Next we'll install mod-wsgi for apache, make sure you use the '-py3' suffix.
 ```
 	sudo apt-get install libapache2-mod-wsgi-py3 python-dev
 	pip install mod_wsgi
 ```
+
 Enable mod_wsgi with the following command
 ```
 	sudo a2enmod wsgi
@@ -111,8 +93,14 @@ and paste this in, changing filenames where needed.
 	    "command":        ["git pull", "touch server.wsgi"]
   	}
 ```
+The commands I chose were `git pull` and `touch server.wsgi`. These commands run in the folder you specify with whatever use you set on line 6 of your server.conf file. 
 
-You'll need to then setup a webhook on github for your repo with these settings
+`git pull` will obviously just pull any newly pushed data, it will fail if you have any uncommited changes. I'm sure you could have some powerful and/or dangerous commands here so be careful. 
+
+`touch server.wsgi` will cause an update to your wsgi file, since the wsgi daemon we set up monitors this file for changes updating will cause the server to reload and start using the newly pushed data.
+
+
+Finally, You'll need to then setup a webhook on github for your repo with these settings
 ```
 	Payload URL: http://example.com:5050/update_server_name_here
 	Content Type: application/json
