@@ -12,9 +12,11 @@ First, test what python you have setup
 ```
 Notice the V is capitalized, a lowercoase v is something else.
 
-If your output looks like `Python 3.5.2` then it's the same as me and this should work better, if it's some other `Python 3.x.y` version, you're good to go and can skip to the next section. 
+If your output looks like `Python 3.5.2` then it's the same as me and this should work better, you can skip to the next section
 
-If it shows up as `Python 2.x.y` you'll need to replace youre regular python with python3.
+If it's some other `Python 3.x.y` version, you're probabably also good and can also skip to the next section.
+
+If it shows up as some kind of `Python 2.x.y` you'll need to replace your regular python and pip commands with their python3 counterparts.
 
 Here are the basic commands, this will get rid of the old python and pip commands and replace them with the python3 versions.
 ```
