@@ -99,7 +99,7 @@ The commands I chose were `git pull` and `touch server.wsgi`. These commands run
 
 `git pull` will obviously just pull any newly pushed data, it will fail if you have any uncommited changes. I'm sure you could have some powerful and/or dangerous commands here so be careful. 
 
-`touch server.wsgi` will cause an update to your wsgi file, since the wsgi daemon we set up monitors this file for changes updating will cause the server to reload and start using the newly pushed data.
+`touch server.wsgi` will cause an update to your wsgi file, since the wsgi daemon we set up monitors this file for changes. Updating will cause the server to reload and start using the newly pushed data.
 
 
 Finally, You'll need to then setup a webhook on github for your repo with these settings
