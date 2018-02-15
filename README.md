@@ -14,7 +14,7 @@ Notice the V is capitalized, a lowercoase v is something else.
 
 If your output looks like `Python 3.5.2` then it's the same as me and this should work better, you can skip to the next section
 
-If it's some other `Python 3.x.y` version, you're probabably also good and can also skip to the next section.
+If it's some other `Python 3.x.y` version, you're probabably also good and can also skip to the next section. Unless you have `Python 3.6.x`, that won't work yet.
 
 If it shows up as some kind of `Python 2.x.y` you'll need to replace your regular python and pip commands with their python3 counterparts.
 
