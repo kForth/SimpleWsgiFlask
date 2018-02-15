@@ -115,9 +115,9 @@ Make sure to change the port to match line 1 in your conf and change 'server_nam
 
 You should rename all of these files now so that they're meaningful. Here's an example of how to rename server.wsgi, server.conf, and server.py.
 ```
-	cp server.wsgi example_server.wsgi
-	cp server.conf example_server.conf
-	cp server.py example_server.py
+	mv server.wsgi example_server.wsgi
+	mv server.conf example_server.conf
+	mv server.py example_server.py
 ```
 You'd replace 'example_server' with whatever you want.
 
