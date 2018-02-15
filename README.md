@@ -33,13 +33,13 @@ This is where the python3 people come back.
 We're going to install apache2 now, you might already have this.
 ```
 	sudo apt-get update && sudo apt-get upgrade
-	sudo apt-get install apache2 apache2-doc apache2-utils
+	sudo apt-get install apache2 apache2-doc apache2-utils apache2-dev
 ```
 You might want to add `KeepAlive Off` to your /etc/apache2/apache2.conf if you want to save memory. If you do edit it, restart apache with `sudo service apache2 restart`.
 
 Next we'll install mod-wsgi for apache, make sure you use the '-py3' suffix.
 ```
-	sudo apt-get install libapache2-mod-wsgi-py3 python-dev
+	sudo apt-get install libapache2-mod-wsgi-py3 python3-dev
 	pip install mod_wsgi
 ```
 
